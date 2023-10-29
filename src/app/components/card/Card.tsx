@@ -3,6 +3,8 @@ import { User } from "../../models/User";
 import { TERipple } from 'tw-elements-react';
 import Modal from "../../modal/Modal";
 import Backdrop from "../../layout/Backdrop";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 interface Props{
     user:User
@@ -31,9 +33,10 @@ const Card = ({ user}:Props) => {
             className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
             {user.name.first} {user.name.last}
           </h5>
-          <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+          <div className="flex items-center mb-4 text-base text-neutral-600 dark:text-neutral-200">
+          <FontAwesomeIcon icon={faEnvelope} className="w-5 h-5 mr-2" />
           {user.email}
-          </p>
+        </div>
           <button onClick={openModal} className="bg-blue-500 text-white active:bg-blue-500 px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1">
           View more
         </button>

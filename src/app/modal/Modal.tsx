@@ -2,6 +2,8 @@
 import React from "react";
 import { User } from "../models/User";
 import { format } from "date-fns";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBirthdayCake, faMapMarker, faPhone } from "@fortawesome/free-solid-svg-icons";
 
 type ModalProps = {
   isOpen: boolean;
@@ -32,14 +34,21 @@ const Modal: React.FC<ModalProps> = ({ isOpen, closeModal, user }) => {
                     {user.name.first} {user.name.last} - Age({user.dob.age})
                 </h5>
                 <p className="mb-4 text-lg md:text-base text-neutral-600 dark:text-neutral-200"> {/* Increase text size on mobile */}
-                  <b>Date Of Birth</b> : {formattedDate}<br/>
-                   <b>Phone Number</b> : {user.phone} <br/>
+                <div className="flex items-center mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                  <FontAwesomeIcon icon={faBirthdayCake} className="w-5 h-5 mr-2" />
+                  <b>Date Of Birth</b>: {formattedDate} <br />
+                </div>
+                  <div className="flex items-center mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                  <FontAwesomeIcon icon={faPhone} className="w-5 h-5 mr-2" />
+                  <b>Phone Number</b>: {user.phone} <br />
+                </div>
                 </p>
                 <p className="text-base text-neutral-500 dark:text-neutral-300">
-                    {user.location.street.name},{user.location.city},<br/>
-                    {user.location.state}<br/>
-                    {user.location.postcode}<br/>
-                    {user.location.country}
+                  <FontAwesomeIcon icon={faMapMarker} className="w-5 h-5 mr-2" />
+                  {user.location.street.name},{user.location.city},<br/>
+                  {user.location.state}<br/>
+                  {user.location.postcode}<br/>
+                  {user.location.country}
                 </p>
                 </div>
             </div>
